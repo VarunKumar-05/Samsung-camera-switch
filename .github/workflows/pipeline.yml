@@ -1,0 +1,16 @@
+name: Pipeline tests
+on:
+  push:
+    paths: ["pipeline/**", ".github/workflows/pipeline.yml"]
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: pipeline } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pytest -q

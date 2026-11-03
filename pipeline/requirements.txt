@@ -1,0 +1,7 @@
+numpy>=1.26
+scipy>=1.11
+opencv-python-headless>=4.9
+rawpy>=0.21
+pytest>=8
+# only for camlab/ml (the learned burst denoiser):
+# torch>=2.2
